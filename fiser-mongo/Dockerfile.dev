@@ -1,0 +1,17 @@
+FROM python:3.11-slim-bullseye as base
+ENV PATH="$PATH:/root/.local/bin"
+
+
+RUN apt update
+RUN apt install --yes libpq-dev python3-dev gcc libc6
+RUN pip install poetry==1.5.1
+RUN poetry config virtualenvs.create false
+
+
+WORKDIR /app
+ADD poetry.lock pyproject.toml ./
+RUN poetry install
+RUN rm -f poetry.lock pyproject.toml
+
+# RUN pip uninstall poetry
+CMD ["sleep", "infinity"]

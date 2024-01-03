@@ -1,0 +1,7 @@
+services:
+  app:
+    command: "sleep infinity"
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app

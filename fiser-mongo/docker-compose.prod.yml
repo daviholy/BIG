@@ -1,0 +1,6 @@
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile.prod
+    env_file: .env.prod

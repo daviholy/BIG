@@ -1,0 +1,31 @@
+services: 
+    db:
+      image: neo4j
+      restart: always    
+      ports:
+        - '7474:7474'
+        - '7687:7687'
+      healthcheck:
+        test: wget http://localhost:7474 || exit 1 # check if the neo4j service is running on port 7474
+        interval: 10s
+        timeout: 5s
+        retries: 5
+      environment:
+        NEO4J_AUTH: 'neo4j/adminpass'
+
+
+
+    app:
+      depends_on:
+        db:
+          condition: service_healthy
+      environment:
+        NEO4J_USERNAME: 'neo4j'
+        NEO4J_PASSWORD: 'adminpass'
+        NEO4J_BOLT_URL: 'bolt://db:7678'
+      ports:
+        - 5000:5000
+      build:
+        context: .
+        dockerfile: Dockerfile.dev
+

@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Shody</h2>
+{% if profiles %}
+    {% for profile in profiles %}
+        <article class="card" style="width: 18rem;">
+            <section class="card-body">
+            <h3 class="card-title">{{ profile.name }}</h5>
+            <ul class="card-text">
+                <li>Věk: {{ profile.age }}</li>
+                <li>Záliby:
+                    <ul>
+                    {% for hobby in profile.hobbies %}
+                        <li>{{ hobby }}</li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            </section>
+        </article>
+    {% endfor %}
+{% else %}
+    <p>Bohužel nemáte žádné shody.</p>
+{% endif %}
+
+{% endblock %}

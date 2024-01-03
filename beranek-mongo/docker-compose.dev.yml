@@ -1,0 +1,12 @@
+services:
+   
+  app:
+    command: "sleep infinity"
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: .
+        target: /app/
+    ports:
+      - 5000:5000

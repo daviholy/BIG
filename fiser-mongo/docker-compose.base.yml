@@ -1,0 +1,16 @@
+services: 
+    db:
+      image: mongo
+      restart: always
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: example
+    app:
+      depends_on:
+        - db
+      env_file: .env
+      ports:
+        - 8501:8501
+
+volumes:
+  pgdata:

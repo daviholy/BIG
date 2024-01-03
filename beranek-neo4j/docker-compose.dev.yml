@@ -1,0 +1,6 @@
+services:
+  app:
+    volumes:
+      - .:/app
+    build:
+      dockerfile: Dockerfile.dev

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "meteo"
+version = "0.1.0"
+description = ""
+authors = ["David Holý <david.holy225@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pymongo = "*"
+plotly = "^5.18.0"
+pandas = "^2.1.3"
+dash = "^2.14.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

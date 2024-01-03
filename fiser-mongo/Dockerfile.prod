@@ -1,0 +1,19 @@
+
+FROM python:3.11-slim-bullseye as base
+ENV PATH="$PATH:/root/.local/bin"
+
+
+RUN apt update
+RUN apt install --yes libpq-dev python3-dev gcc libc6
+RUN pip install poetry==1.5.1
+
+WORKDIR /app
+RUN poetry config virtualenvs.create false
+
+COPY data.csv
+COPY src 
+RUN poetry install --no-directory --no-root
+
+ADD src src
+
+CMD [ "poetry", "run", "streamlit", "run", "src/__main__.py"]

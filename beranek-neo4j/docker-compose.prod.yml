@@ -1,0 +1,5 @@
+services:
+  app:
+    image: neo4j-app
+    build:
+      dockerfile: Dockerfile.prod
